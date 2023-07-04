@@ -1,0 +1,29 @@
+<div class="load-more list-movies">
+  <div id="new-post" class="hidden"></div>
+  <% @posts.each do |post| %>
+    <div class="central-meta item row">
+      <div class="col-sm-6">
+        <div class="classic-post">
+          <figure>
+            <div class="movie-style embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= post.video_id %>" allowfullscreen></iframe>
+            </div>
+          </figure>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <h5><%= post.title %></h5>
+        <p>Share by: <%= post.user.email %></p>
+        <p>Description:</p>
+        <p id="full-text-<%= post.id %>" class="full-text" hidden>
+          <%= post.description %>
+        </p>
+        <p id="short-text-<%= post.id %>" class="short-text">
+          <%= truncate(post.description, length: 400) %>
+        </p>
+        <a id="show-more-<%= post.id %>" href="#" class="show-more" onclick="showMore(<%= post.id %>)">Show More</a>
+        <a id="show-less-<%= post.id %>" href="#" class="show-less" onclick="showLess(<%= post.id %>)" hidden>Show Less</a>
+      </div>
+    </div>
+  <% end %>
+</div>

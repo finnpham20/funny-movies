@@ -1,0 +1,17 @@
+<div class="topbar transparent stick">
+  <div class="row main-menu">
+    <div class="col-sm-4 d-flex" onclick="location.href='/'">
+      <span class="material-symbols-outlined icon-home pointer">
+        home
+      </span>
+      <span class="fs-30 pointer">Funny Movies</span>
+    </div>
+    <div class="col-sm-8 d-flex justify-content-end">
+      <% if current_user.present? %>
+        <%= render "layouts/funny_movies/current_user" %>
+      <% else %>
+        <%= render "layouts/funny_movies/login" %>
+      <% end %>
+    </div>
+  </div>
+</div>

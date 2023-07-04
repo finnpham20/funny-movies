@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row justify-content-end">
+        <%= form_tag login_path, class: 'd-flex' do %>
+        <div class="col-sm">
+            <%= text_field_tag :email , "" , placeholder: "Email" , class: "form-control", required: true %>
+        </div>
+        <div class="col-sm">
+            <%= text_field_tag :password , "" , placeholder: "Password" , class: "form-control", type: 'password', required: true %>
+        </div>
+        <div class="col-sm d-flex justify-content-end">
+            <%= submit_tag 'Login/Register', class: "btn btn-primary" %>
+        </div>
+        <% end %>
+    </div>
+</div>

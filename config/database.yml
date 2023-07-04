@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV.fetch("RAILS_DB_HOST") { "localhost" } %>
+  username: <%= ENV.fetch("RAILS_DB_USER_NAME") { "finn" } %>
+  password: <%= ENV.fetch("RAILS_DB_PASSWORD") { "123456" } %>
+
+development:
+  <<: *default
+  database: funny_movies_development
+
+test:
+  <<: *default
+  database: funny_movies_test
+
+production:
+  <<: *default
+  database: funny_movies_production
+  username: funny_movies
+  password: <%= ENV["FUNNY_MOVIES_DATABASE_PASSWORD"] %>

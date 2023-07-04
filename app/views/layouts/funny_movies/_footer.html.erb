@@ -1,0 +1,27 @@
+<!--<script src="/funny-movies/js/main.min.js"></script>-->
+<!--<script src="/funny-movies/js/jquery-stories.js"></script>-->
+<!--<script src="/funny-movies/js/script.js"></script>-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="/js/custom.js"></script>
+
+<% flash.each do |key, value| %>
+  <% if key == "success" %>
+    <script>
+      toastr.success("<%= value %>");
+    </script>
+  <% elsif key == "error" %>
+    <% if value.is_a?(Hash) %>
+      <% value.each do |k, v| %>
+        <script>toastr.error("<%= "#{k.titlecase}: #{v&.first}" %>");</script>
+      <% end %>
+    <% else %>
+      <script>toastr.error("<%= value %>");</script>
+    <% end %>
+  <% end %>
+<% end %>
+
+</body>
+</html>
+
