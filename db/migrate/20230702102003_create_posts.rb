@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreatePosts < ActiveRecord::Migration[7.0]
   def change
     create_table :posts do |t|
@@ -11,6 +13,6 @@ class CreatePosts < ActiveRecord::Migration[7.0]
     end
 
     add_index :posts, :title
-    add_index :posts, [ :video_id, :user_id ], name: :index_posts_video_user_uniqueness, unique: true
+    add_index :posts, %i[video_id user_id], name: :index_posts_video_user_uniqueness, unique: true
   end
 end

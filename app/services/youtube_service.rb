@@ -18,11 +18,12 @@ class YoutubeService
     end
 
     result
-  rescue StandardError => ex
-    Rails.logger.error ex
+  rescue StandardError => e
+    Rails.logger.error e
     # raise to Sentry or Rollbar here
   end
 
   private
+
   attr_reader :youtube
 end

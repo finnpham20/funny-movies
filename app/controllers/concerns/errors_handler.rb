@@ -26,7 +26,7 @@ module ErrorsHandler
   end
 
   def handle_unauthorized
-    flash[:error] = 'Please login first!'
+    flash[:error] = I18n.t('session.login.required')
     redirect_to root_path
   end
 

@@ -33,7 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_02_102003) do
     t.string "password_digest", limit: 256, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email"
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end

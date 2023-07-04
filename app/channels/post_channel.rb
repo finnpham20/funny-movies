@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PostChannel < ApplicationCable::Channel
   def subscribed
     return reject unless current_user

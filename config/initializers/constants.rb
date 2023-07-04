@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RegexConstant
   PASSWORD_FORMAT = /\A
     (?=.{8,})          # Must contain 8 or more characters
@@ -8,7 +10,7 @@ class RegexConstant
   /x
 
   EMAIL_FORMAT = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
-  YOUTUBE_URL_FORMAT = /\Ahttps:\/\/?(?:www\.)?youtube\.com\/watch\?v=(?<video_id>.+)/
+  YOUTUBE_URL_FORMAT = %r{\Ahttps://?(?:www\.)?youtube\.com/watch\?v=(?<video_id>.+)}
 end
 
 class SideKiqQueue

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -11,11 +13,14 @@
 class User < ApplicationRecord
   has_secure_password
 
-  validates :email, uniqueness: true, format: { with: RegexConstant::EMAIL_FORMAT }
-  validates :password, length: { in: 8..40 },
-            format: { with: RegexConstant::PASSWORD_FORMAT,
-                      message: 'Your password must be at least 8 characters long, contain at least one number and @ and have a mixture of uppercase and lowercase letters.' },
-            confirmation: true, on: :create
+  validates :email, presence: true,
+                    uniqueness: true,
+                    format: { with: RegexConstant::EMAIL_FORMAT }
+  validates :password, presence: true,
+                       length: { in: 8..40 },
+                       format: { with: RegexConstant::PASSWORD_FORMAT,
+                                 message: I18n.t('errors.models.user.password_format') },
+                       confirmation: true, on: :create
 
   has_many :posts, dependent: :destroy
 end

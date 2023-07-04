@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
   before_action :authenticate_user!
 
@@ -8,7 +10,7 @@ class PostsController < ApplicationController
   def create
     post = current_user.posts.create!(create_params)
     FetchVideoInfo.perform_async(post.id)
-    flash[:success] = 'Your URL is added to share, please wait a moment to see your movie on newsfeed!'
+    flash[:success] = I18n.t('post.create.success')
 
     redirect_to root_path
   end

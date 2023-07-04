@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   get 'users/new'
   get 'users/create'
@@ -6,9 +8,9 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
 
   # Defines the root path route ("/")
-  root "home#index"
+  root 'home#index'
 
-  resources :posts, only: [:new, :create]
+  resources :posts, only: %i[new create]
 
-  mount ActionCable.server => "/cable"
+  mount ActionCable.server => '/cable'
 end

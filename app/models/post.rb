@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: posts
@@ -18,8 +20,9 @@ class Post < ApplicationRecord
   enum status: { pending: 0, shared: 1, unshared: 2 }
 
   validates :youtube_url, presence: true, format: { with: RegexConstant::YOUTUBE_URL_FORMAT,
-                                                    message: 'Youtube URL is not in the correct format.' }
-  validates :video_id, presence: true, uniqueness: { scope: :user_id, message: 'This movie has already been shared before.' }
+                                                    message: I18n.t('errors.models.post.youtube_url_format') }
+  validates :video_id, presence: true,
+                       uniqueness: { scope: :user_id, message: I18n.t('errors.models.post.video_id_taken') }
 
   before_validation :extract_video_id, on: :create
 
@@ -27,9 +30,9 @@ class Post < ApplicationRecord
 
   def extract_video_id
     param_list = youtube_url.split('?')[1].split('&')
-    vid = param_list.find {|k| k.include?('v=') }
+    vid = param_list.find { |k| k.include?('v=') }
     self.video_id = vid.gsub('v=', '')
-  rescue
+  rescue StandardError
     self.video_id = nil
   end
 end

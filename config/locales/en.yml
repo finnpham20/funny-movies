@@ -30,4 +30,25 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  errors:
+    models:
+      user:
+        password_format: 'Your password must be at least 8 characters long, contain at least one number and @ and have a mixture of uppercase and lowercase letters.'
+      post:
+        youtube_url_format: Youtube URL is not in the correct format.
+        video_id_taken: This movie has already been shared before.
+
+  session:
+    sign_up:
+      success: Register successful! Please login to continue
+    login:
+      required: Please login first!
+      success: Login successful!
+      incorrect: Email or Password incorrect!
+    logout:
+      success: Logout successful!
+  post:
+    create:
+      success: Your URL is added to share, please wait a moment to see your movie on newsfeed!
+
+

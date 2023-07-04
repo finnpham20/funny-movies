@@ -1,0 +1,67 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 3.0.0
+  UseCache: true
+  NewCops: enable
+  Exclude:
+    - 'node_modules/**/*'
+    - 'bin/**/*'
+    - 'db/schema.rb'
+    - 'db/migrate/*'
+    - 'vendor/bundle/**/*'
+    - 'lib/tasks/*.rake'
+    - 'config/**/*'
+    - 'spec/*_helper.rb'
+    - 'log/*'
+    - 'tmp/**/*'
+
+Metrics/PerceivedComplexity:
+  Max: 20
+
+Metrics/CyclomaticComplexity:
+  Max: 20
+
+Metrics/AbcSize:
+  Max: 70
+
+Metrics/MethodLength:
+  Max: 50
+
+Metrics/ParameterLists:
+  Max: 8
+
+Metrics/BlockLength:
+  Max: 50
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Layout/EmptyLineAfterMagicComment:
+  Enabled: false
+
+Rails/BulkChangeTable:
+  Enabled: false
+
+Layout/HashAlignment:
+  Enabled: false
+
+Naming/VariableNumber:
+  Enabled: false
+
+Rails/Output:
+  Enabled: false
+
+Lint/MissingSuper:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
