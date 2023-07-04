@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe PostChannel, type: :channel do
+RSpec.describe PostChannel do
   let(:user) { create(:user) }
 
   it 'successfully identifies the current user' do
@@ -26,8 +26,8 @@ RSpec.describe PostChannel, type: :channel do
     stub_connection current_user: user
     subscribe
     msg = { video_id: '123', title: 'title123', description: 'test', email: 'finn@gmail.com' }
-    expect {
+    expect do
       ActionCable.server.broadcast('post_channel', msg)
-    }.to have_broadcasted_to('post_channel').with(msg)
+    end.to have_broadcasted_to('post_channel').with(msg)
   end
 end

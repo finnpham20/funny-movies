@@ -65,3 +65,9 @@ RSpec/MultipleExpectations:
 
 RSpec/MultipleMemoizedHelpers:
   Enabled: false
+
+RSpec/ExampleLength:
+  Max: 50
+
+Rails/ActionControllerFlashBeforeRender:
+  Enabled: false

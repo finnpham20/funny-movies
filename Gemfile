@@ -62,12 +62,12 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
+  gem 'rspec-sidekiq'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
   gem 'simplecov'
   gem 'spring-commands-rspec'
   gem 'webdrivers'
-  gem 'rspec-sidekiq'
 end
 
 group :development do
