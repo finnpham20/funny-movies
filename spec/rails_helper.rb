@@ -9,6 +9,7 @@ require File.expand_path('../config/environment', __dir__)
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 require 'support/chrome'
+require 'support/request_spec_helper'
 
 begin
   ActiveRecord::Migration.maintain_test_schema!

@@ -35,6 +35,6 @@ class SessionsController < ApplicationController
     @user = User.new(user_params)
     return unless @user.save!
 
-    flash.now[:success] = I18n.t(:'session.sign_up.success')
+    flash[:success] = I18n.t(:'session.sign_up.success')
   end
 end
