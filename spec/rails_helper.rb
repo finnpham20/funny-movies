@@ -2,14 +2,15 @@
 
 require 'spec_helper'
 require 'shoulda/matchers'
+require 'support/chrome'
+require 'support/request_spec_helper'
+require 'sidekiq/testing'
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
-require 'support/chrome'
-require 'support/request_spec_helper'
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -18,6 +19,10 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+  config.before(:each) do
+    Sidekiq::Testing.fake!
+  end
+
   Dir[Rails.root.join('spec/supports/**/*.rb')].sort.each { |f| require f }
 
   config.use_transactional_fixtures = true

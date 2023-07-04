@@ -15,5 +15,4 @@ end
 
 class SideKiqQueue
   FETCH_VIDEO_INFO = 'fetch_video_info'
-  POST_BROADCASTER = 'post_broadcaster'
 end

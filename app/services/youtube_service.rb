@@ -9,9 +9,10 @@ class YoutubeService
   end
 
   def fetch_info(video_id)
-    response = youtube.list_videos('snippet', id: video_id)
     result = {}
+    return result if video_id.blank?
 
+    response = youtube.list_videos('snippet', id: video_id)
     if response.items.size.positive?
       result[:title] = response.items[0].snippet.title
       result[:description] = response.items[0].snippet.description
