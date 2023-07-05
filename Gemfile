@@ -55,10 +55,13 @@ gem 'google-api-client'
 group :development, :test do
   gem 'brakeman', require: false
   gem 'capybara'
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'pry'
   gem 'pry-rails'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
