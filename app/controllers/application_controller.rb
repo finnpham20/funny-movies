@@ -14,4 +14,10 @@ class ApplicationController < ActionController::Base
   def authenticate_user!
     raise Unauthorized unless current_user
   end
+
+  def render_404
+    flash[:error] = I18n.t('page.not_found')
+
+    redirect_to root_path
+  end
 end
