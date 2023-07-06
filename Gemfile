@@ -52,6 +52,8 @@ gem 'sidekiq'
 
 gem 'google-api-client'
 
+gem 'rack-cors'
+
 group :development, :test do
   gem 'brakeman', require: false
   gem 'capybara'
