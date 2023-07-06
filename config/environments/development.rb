@@ -75,4 +75,8 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   config.log_level = :debug
+
+  config.hosts << "funny-movies.click"
+  config.action_cable.url = 'wss://funny-movies.click/cable'
+  config.action_cable.allowed_request_origins = [/.*/]
 end
