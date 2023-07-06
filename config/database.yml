@@ -1,21 +1,21 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: <%= ENV.fetch("RAILS_DB_HOST") { "localhost" } %>
-  username: <%= ENV.fetch("RAILS_DB_USER_NAME") { "finn" } %>
-  password: <%= ENV.fetch("RAILS_DB_PASSWORD") { "123456" } %>
+  host: <%= Rails.application.credentials.dig(:db, :host) || ENV.fetch('RAILS_DB_HOST', 'localhost') %>
+  username: <%= Rails.application.credentials.dig(:db, :username) || ENV.fetch('RAILS_DB_USER_NAME', 'postgres') %>
+  password: <%= Rails.application.credentials.dig(:db, :password) || ENV.fetch('RAILS_DB_PASSWORD', 'p@ssw0rd') %>
+  pool: <%= Rails.application.credentials.dig(:db, :pool) || ENV.fetch('RAILS_MAX_THREADS', 5)  %>
+  timeout: <%= Rails.application.credentials.dig(:db, :timeout) || ENV.fetch('RAILS_DB_TIMEOUT', 5000) %>
+  port: <%= Rails.application.credentials.dig(:db, :port) || ENV.fetch('RAILS_DB_PORT', 5432) %>
 
 development:
   <<: *default
-  database: funny_movies_development
+  database: <%= Rails.application.credentials.dig(:db, :db_name) || 'funny_movies' %>
 
 test:
   <<: *default
-  database: funny_movies_test
+  database: <%= Rails.application.credentials.dig(:db, :db_name) || 'funny_movies_test' %>
 
 production:
   <<: *default
-  database: funny_movies_production
-  username: funny_movies
-  password: <%= ENV["FUNNY_MOVIES_DATABASE_PASSWORD"] %>
+  database: <%= Rails.application.credentials.dig(:db, :db_name) || 'funny_movies_production' %>
