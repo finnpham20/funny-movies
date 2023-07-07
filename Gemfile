@@ -67,12 +67,10 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
-  gem 'rspec-sidekiq'
-  gem 'selenium-webdriver'
+
   gem 'shoulda-matchers'
   gem 'simplecov'
-  gem 'spring-commands-rspec'
-  gem 'webdrivers'
+
 end
 
 group :development do
@@ -85,4 +83,11 @@ group :development do
   # N+1 queries
   gem 'bullet'
   gem 'web-console'
+end
+
+group :test do
+  gem 'rspec-sidekiq'
+  gem 'selenium-webdriver'
+  gem 'spring-commands-rspec'
+  gem 'webdrivers'
 end
