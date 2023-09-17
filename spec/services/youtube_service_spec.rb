@@ -22,5 +22,11 @@ RSpec.describe YoutubeService, type: :service do
       expect(result).to be_a(Hash)
       expect(result.empty?).to be true
     end
+
+    it 'returns empty hash when video_id is empty' do
+      result = youtube_service.fetch_info(nil)
+
+      expect(result.empty?).to be true
+    end
   end
 end

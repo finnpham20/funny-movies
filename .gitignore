@@ -36,3 +36,6 @@
 
 .idea/*
 .env
+
+/coverage/*
+.byebug_history

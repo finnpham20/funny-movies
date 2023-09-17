@@ -65,12 +65,13 @@ group :development, :test do
   gem 'faker'
   gem 'pry'
   gem 'pry-rails'
+  gem 'pry-byebug'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
 
   gem 'shoulda-matchers'
   gem 'simplecov'
-
+  gem 'action-cable-testing'
 end
 
 group :development do

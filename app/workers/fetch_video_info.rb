@@ -12,17 +12,17 @@ class FetchVideoInfo
 
     ActiveRecord::Base.transaction do
       result = YoutubeService.new.fetch_info(post.video_id)
+
       if result.empty? || !(result.key?(:title) && result.key?(:description))
-        post.unshared!
-        # broadcast can not share this video
+        post.update!(status: :unshared)
+      else
+        result.merge!(status: :shared)
+        post.update!(result)
+
+        msg = post.slice(:id, :title, :video_id, :description)
+        msg.merge!(email: post.user.email)
+        PostChannel.broadcast_to('post_channel', msg.to_json)
       end
-
-      result.merge!(status: :shared)
-      post.update!(result)
-
-      msg = post.slice(:id, :title, :video_id, :description)
-      msg.merge!(email: post.user.email)
-      PostChannel.broadcast_to('post_channel', msg.to_json)
     end
   end
 end

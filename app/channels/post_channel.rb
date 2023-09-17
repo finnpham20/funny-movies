@@ -10,6 +10,6 @@ class PostChannel < ApplicationCable::Channel
   def unsubscribed
     return reject unless current_user
 
-    stop_stream_for 'post_channel'
+    stop_stream_for current_user
   end
 end

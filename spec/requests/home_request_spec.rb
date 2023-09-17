@@ -17,4 +17,14 @@ RSpec.describe 'Homes' do
       expect(assigns(:posts).size).to eq(10)
     end
   end
+
+  describe 'not found page' do
+    it 'renders homepage when go to undefined_page' do
+      get '/undefined_page'
+
+      expect(response).to redirect_to(root_path)
+      follow_redirect!
+      expect(response.body).to include(I18n.t('page.not_found'))
+    end
+  end
 end

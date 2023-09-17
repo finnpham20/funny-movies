@@ -19,9 +19,6 @@ class YoutubeService
     end
 
     result
-  rescue StandardError => e
-    Rails.logger.error e
-    # raise to Sentry or Rollbar here
   end
 
   private

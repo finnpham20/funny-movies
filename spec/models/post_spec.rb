@@ -52,5 +52,13 @@ RSpec.describe Post do
 
       it { expect(post_new_2.video_id).to eq 'mb_J9bPVLfQ' }
     end
+
+    context 'when youtube_url is invalid' do
+      let(:post_new_3) do
+        build(:post, youtube_url: 'https://www.youtube.com/watch/invalid')
+      end
+
+      it { expect(post_new_3.video_id).to be_nil }
+    end
   end
 end
