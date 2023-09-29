@@ -8,8 +8,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = current_user.posts.create!(create_params)
-    FetchVideoInfo.perform_async(post.id)
+    Posts::CreateService.new(current_user, create_params).execute
     flash[:success] = I18n.t('post.create.success')
 
     redirect_to root_path
